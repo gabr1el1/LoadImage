@@ -10,15 +10,18 @@ uses
 type
   TfrmMain = class(TForm)
     pnlHeader: TPanel;
-    Button1: TButton;
+    btnOpenImage: TButton;
     btnClose: TButton;
-    imgFile: TImage;
     ComboBox: TComboBox;
     ListBoxItem1: TListBoxItem;
     ListBoxItem2: TListBoxItem;
     ListBoxItem3: TListBoxItem;
+    Panel1: TPanel;
+    lblImageName: TLabel;
+    lblImagePath: TLabel;
+    imgFile: TImage;
     procedure FormCreate(Sender: TObject);
-    procedure Button1Click(Sender: TObject);
+    procedure btnOpenImageClick(Sender: TObject);
     procedure btnCloseClick(Sender: TObject);
     procedure ComboBoxChange(Sender: TObject);
   private
@@ -42,21 +45,26 @@ begin
   Close;
 end;
 
-procedure TfrmMain.Button1Click(Sender: TObject);
+procedure TfrmMain.btnOpenImageClick(Sender: TObject);
+var path:string;
 begin
   //este método carga la imagen en el componente TImage
   imgFile.Bitmap.LoadFromFile(imagePath + PathDelim + imageName);
+  lblImageName.Text:=imageName;
+  lblImagePath.Text:=imagePath+imageName;
 end;
 
 procedure TfrmMain.ComboBoxChange(Sender: TObject);
 begin
   imageName:=ComboBox.Selected.Text;
+
 end;
 
 procedure TfrmMain.FormCreate(Sender: TObject);
 begin
   imageName := 'barco.jpg';
   imagePath:=TPath.GetDocumentsPath;
+  comboBox.ItemIndex:=0;
 end;
 
 end.
