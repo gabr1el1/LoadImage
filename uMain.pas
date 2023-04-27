@@ -51,7 +51,7 @@ begin
   //este método carga la imagen en el componente TImage
   imgFile.Bitmap.LoadFromFile(imagePath + PathDelim + imageName);
   lblImageName.Text:=imageName;
-  lblImagePath.Text:=imagePath+imageName;
+  lblImagePath.Text:=imagePath + Pathdelim + imageName;
 end;
 
 procedure TfrmMain.ComboBoxChange(Sender: TObject);
